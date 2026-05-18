@@ -1,0 +1,41 @@
+name: Deploy to Hugging Face
+
+on:
+push:
+branches:
+- main
+
+jobs:
+deploy:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+
+  - name: Push to Hugging Face Space
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
+    run: |
+      git config --global user.email "muhammadqasimshabbir3@gmail.com"
+      git config --global user.name "github-actions"
+
+      git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/MuhammadQasimShabbir3/AttnGan-text2flower hf-space
+
+      rsync -av \
+        --exclude '.git' \
+        --exclude 'training_results_epoches_79' \
+        --exclude '*.png' \
+        --exclude '*.ipynb' \
+        ./ hf-space/
+
+      cd hf-space
+
+      git add .
+
+      git commit -m "Deploy from GitHub" || echo "No changes"
+
+      git push
+```
