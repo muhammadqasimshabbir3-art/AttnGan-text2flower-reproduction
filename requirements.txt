@@ -1,0 +1,15 @@
+# NOTE: Install PyTorch separately using the command appropriate for your CUDA / CPU setup from https://pytorch.org/get-started/locally/
+# Example (CPU-only):
+#   python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+gradio>=3.0
+numpy>=1.21
+Pillow>=8.0
+torchvision>=0.11
+nltk>=3.5
+matplotlib>=3.3
+tqdm>=4.50
+scipy>=1.5
+pandas>=1.1
+
+
