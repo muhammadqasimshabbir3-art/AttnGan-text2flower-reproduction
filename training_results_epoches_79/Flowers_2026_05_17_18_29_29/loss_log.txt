@@ -1,0 +1,1 @@
+epoch,step,s_loss0,s_loss1,w_loss0,w_loss1
